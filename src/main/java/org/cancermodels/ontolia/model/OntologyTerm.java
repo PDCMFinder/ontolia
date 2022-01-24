@@ -50,4 +50,14 @@ abstract class OntologyTerm {
     public void setSynonyms(Set<String> synonyms) {
         this.synonyms = synonyms;
     }
+
+    @Override
+    public String toString() {
+        return "OntologyTerm{" +
+                "id='" + id + '\'' +
+                ", iri='" + iri + '\'' +
+                ", label='" + label + '\'' +
+                ", synonyms=" + synonyms +
+                '}';
+    }
 }
