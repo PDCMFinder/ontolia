@@ -150,18 +150,18 @@ public class OntoliaMatrix {
     private String getCleanLabel(String label){
 
         String cleanLabel = label.toLowerCase();
-        cleanLabel = cleanLabel.replaceAll("regimen", "");
-        cleanLabel = cleanLabel.replaceAll("high dose", "");
-        cleanLabel = cleanLabel.replaceAll("low-dose", "");
-        cleanLabel = cleanLabel.replaceAll("low dose", "");
-        cleanLabel = cleanLabel.replaceAll("dose-dense", "");
-        cleanLabel = cleanLabel.replaceAll("high-dose", "");
-        cleanLabel = cleanLabel.replaceAll("pulse intense", "");
-        cleanLabel = cleanLabel.replaceAll("intravenous", "");
-        cleanLabel = cleanLabel.replaceAll("oral", "");
-        cleanLabel = cleanLabel.replaceAll("modified", "");
-        cleanLabel = cleanLabel.replaceAll("hyperfractionated", "");
-        cleanLabel = cleanLabel.replaceAll("infusional", "");
+        cleanLabel = cleanLabel.replace("regimen", "");
+        cleanLabel = cleanLabel.replace("high dose", "");
+        cleanLabel = cleanLabel.replace("low-dose", "");
+        cleanLabel = cleanLabel.replace("low dose", "");
+        cleanLabel = cleanLabel.replace("dose-dense", "");
+        cleanLabel = cleanLabel.replace("high-dose", "");
+        cleanLabel = cleanLabel.replace("pulse intense", "");
+        cleanLabel = cleanLabel.replace("intravenous", "");
+        cleanLabel = cleanLabel.replace("oral", "");
+        cleanLabel = cleanLabel.replace("modified", "");
+        cleanLabel = cleanLabel.replace("hyperfractionated", "");
+        cleanLabel = cleanLabel.replace("infusional", "");
 
         cleanLabel = cleanLabel.replaceAll("([^\\s]+\\s+cancer)", "");
 
