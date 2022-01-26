@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -138,15 +139,10 @@ public class OntologyReader {
     }
 
     public String encodeUrl(String url){
-        String encodedTermUrl = "";
-        try {
-            //have to double encode the url to get the desired result
-            encodedTermUrl = URLEncoder.encode(url, "UTF-8");
-            encodedTermUrl = URLEncoder.encode(encodedTermUrl, "UTF-8");
-
-        } catch (UnsupportedEncodingException e) {
-            log.error("UnsupportedEncodingException occured");
-        }
+        String encodedTermUrl;
+        //have to double encode the url to get the desired result
+        encodedTermUrl = URLEncoder.encode(url, StandardCharsets.UTF_8);
+        encodedTermUrl = URLEncoder.encode(encodedTermUrl, StandardCharsets.UTF_8);
         return encodedTermUrl;
     }
 
