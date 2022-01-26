@@ -25,7 +25,7 @@ public class OntologyLinking {
             RegimenOntologyTerm regimen = entry.getValue();
             linkRegimenToTreatments(regimen);
         }
-        log.info("Linked regimens: "+ontology.getLinkedRegimenCounter());
+        log.info("Linked regimens: {}",ontology.getLinkedRegimenCounter());
         log.info("Linking treatment terms to regimens. DONE");
 
     }
@@ -41,7 +41,7 @@ public class OntologyLinking {
                     treatmentTermSynonymsMap.put(synonym.toLowerCase(), term);
                 }
             }catch (Exception e){
-                log.error("Exception with"+term);
+                log.error("Exception with {}",term);
             }
         }
     }

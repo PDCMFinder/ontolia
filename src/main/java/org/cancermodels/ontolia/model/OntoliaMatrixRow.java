@@ -33,24 +33,24 @@ public class OntoliaMatrixRow {
      */
     public String getRowString(){
 
-        String s = "";
+        StringBuilder s = new StringBuilder("");
         for(int i = 0; i < synonyms.length; i++){
 
             if(matchedTerms.get(i) != null){
                 if(matchedTermsFoundIn.get(i).equals("label")){
-                    s += "["+matchedTerms.get(i).getLabel()+"] ";
+                    s.append("["+matchedTerms.get(i).getLabel()+"] ");
                 }
                 else {
-                    s += "("+matchedTerms.get(i).getLabel()+") ";
+                    s.append("("+matchedTerms.get(i).getLabel()+") ");
                 }
             }
             else{
 
-                s += "|"+ synonyms[i]+"| ";
+                s.append("|"+ synonyms[i]+"| ");
             }
         }
-        s += "Score: "+matchScore;
-        return s;
+        s.append("Score: "+matchScore);
+        return s.toString();
     }
 
     public void calculateScore(){

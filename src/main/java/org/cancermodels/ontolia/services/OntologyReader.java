@@ -24,10 +24,8 @@ public class OntologyReader {
 
     private static final String ONTOLOGY_ROOT_URL = "https://www.ebi.ac.uk/ols/api/ontologies/ncit/terms/";
     private static final String EMBEDDED = "_embedded";
+    private static final String SYNONYMS = "synonyms";
     private static final Logger log = LoggerFactory.getLogger(OntologyReader.class);
-
-    public OntologyReader() {
-    }
 
     public Ontology loadOntology(List<String> treatmentOntologyBranches, List<String> regimenOntologyBranches){
 
@@ -46,7 +44,7 @@ public class OntologyReader {
 
     public void loadAllTreatmentTermsFromBranch(String branch, Ontology ontology){
         int totalPages = 0;
-        log.info("Loading treatment branch: "+branch);
+        log.info("Loading treatment branch: {}",branch);
         for (int currentPage = 0; currentPage <= totalPages; currentPage++) {
             JSONObject job = getJsonObject(branch, currentPage);
             parseHierarchicalChildrenTerms(job, ontology, false);
@@ -56,7 +54,7 @@ public class OntologyReader {
 
     public void loadAllRegimenTermsFromBranch(String branch, Ontology ontology){
         int totalPages = 0;
-        log.info("Loading regimen branch: "+branch);
+        log.info("Loading regimen branch: {}",branch);
         for (int currentPage = 0; currentPage <= totalPages; currentPage++) {
             JSONObject job = getJsonObject(branch, currentPage);
             parseHierarchicalChildrenTerms(job, ontology, true);
@@ -73,7 +71,7 @@ public class OntologyReader {
             job = new JSONObject(json);
         }
         catch (JSONException e){
-            log.error("JSONException in "+branch);
+            log.error("JSONException in {}",branch);
             return new JSONObject("{}");
         }
         return job;
@@ -83,7 +81,7 @@ public class OntologyReader {
 
         try {
             if (!job.has(EMBEDDED)) return;
-            JSONObject job2 = job.getJSONObject("_embedded");
+            JSONObject job2 = job.getJSONObject(EMBEDDED);
             JSONArray hierarchicalChildren = job2.getJSONArray("terms");
 
             for (int i = 0; i < hierarchicalChildren.length(); i++) {
@@ -107,14 +105,13 @@ public class OntologyReader {
         String termLabel = term.getString("label");
         String id = term.getString("short_form");
         Set<String> synonymsSet = new HashSet<>();
-        if (term.has("synonyms")) {
-            JSONArray synonyms = term.getJSONArray("synonyms");
+        if (term.has(SYNONYMS)) {
+            JSONArray synonyms = term.getJSONArray(SYNONYMS);
             for (int i = 0; i < synonyms.length(); i++) {
                 synonymsSet.add(synonyms.getString(i));
             }
         }
-        TreatmentOntologyTerm newTerm = new TreatmentOntologyTerm(id, url, termLabel, synonymsSet);
-        return newTerm;
+        return new TreatmentOntologyTerm(id, url, termLabel, synonymsSet);
     }
 
     public RegimenOntologyTerm createRegimenOntologyTerm(JSONObject term){
@@ -122,14 +119,13 @@ public class OntologyReader {
         String termLabel = term.getString("label");
         String id = term.getString("short_form");
         Set<String> synonymsSet = new HashSet<>();
-        if (term.has("synonyms")) {
-            JSONArray synonyms = term.getJSONArray("synonyms");
+        if (term.has(SYNONYMS)) {
+            JSONArray synonyms = term.getJSONArray(SYNONYMS);
             for (int i = 0; i < synonyms.length(); i++) {
                 synonymsSet.add(synonyms.getString(i));
             }
         }
-        RegimenOntologyTerm newTerm = new RegimenOntologyTerm(id, url, termLabel, synonymsSet, new ArrayList<>());
-        return newTerm;
+        return new RegimenOntologyTerm(id, url, termLabel, synonymsSet, new ArrayList<>());
     }
 
     public int determineTotalPages(JSONObject job){
@@ -145,7 +141,7 @@ public class OntologyReader {
             encodedTermUrl = URLEncoder.encode(encodedTermUrl, "UTF-8");
 
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.error("UnsupportedEncodingException occured");
         }
         return encodedTermUrl;
     }
@@ -169,7 +165,7 @@ public class OntologyReader {
             }
 
         } catch (Exception e) {
-            log.error("Unable to read from URL " + urlStr, e);
+            log.error("Unable to read from URL {} ", urlStr, e);
         }
         return sb.toString();
     }

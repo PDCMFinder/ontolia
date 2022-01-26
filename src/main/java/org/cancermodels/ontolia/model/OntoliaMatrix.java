@@ -147,7 +147,7 @@ public class OntoliaMatrix {
     }
 
 
-    private String getCleanLabel(String label){
+    public String getCleanLabel(String label){
 
         String cleanLabel = label.toLowerCase();
         cleanLabel = cleanLabel.replace("regimen", "");
@@ -163,7 +163,7 @@ public class OntoliaMatrix {
         cleanLabel = cleanLabel.replace("hyperfractionated", "");
         cleanLabel = cleanLabel.replace("infusional", "");
 
-        cleanLabel = cleanLabel.replaceAll("([^\\s]+\\s+cancer)", "");
+        cleanLabel = cleanLabel.replace("([^\\s]+\\s+cancer)", "");
 
         return cleanLabel.trim();
     }

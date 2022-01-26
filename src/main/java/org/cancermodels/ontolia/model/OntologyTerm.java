@@ -9,10 +9,7 @@ abstract class OntologyTerm {
     private String label;
     private Set<String> synonyms;
 
-    public OntologyTerm() {
-    }
-
-    public OntologyTerm(String id, String iri, String label, Set<String> synonyms) {
+    protected OntologyTerm(String id, String iri, String label, Set<String> synonyms) {
         this.id = id;
         this.iri = iri;
         this.label = label;
