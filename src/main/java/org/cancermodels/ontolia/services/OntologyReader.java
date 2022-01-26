@@ -46,7 +46,7 @@ public class OntologyReader {
         int totalPages = 0;
         log.info("Loading treatment branch: {}",branch);
         for (int currentPage = 0; currentPage <= totalPages; currentPage++) {
-            JSONObject job = getJsonObject(branch, currentPage);
+            JSONObject job = getApiResponseFromBranchUrl(branch, currentPage);
             parseHierarchicalChildrenTerms(job, ontology, false);
             totalPages = determineTotalPages(job);
         }
@@ -56,22 +56,26 @@ public class OntologyReader {
         int totalPages = 0;
         log.info("Loading regimen branch: {}",branch);
         for (int currentPage = 0; currentPage <= totalPages; currentPage++) {
-            JSONObject job = getJsonObject(branch, currentPage);
+            JSONObject job = getApiResponseFromBranchUrl(branch, currentPage);
             parseHierarchicalChildrenTerms(job, ontology, true);
             totalPages = determineTotalPages(job);
         }
     }
 
-    public JSONObject getJsonObject(String branch, int page)  {
+    public JSONObject getApiResponseFromBranchUrl(String branch, int page)  {
         String encodedTermUrl = encodeUrl(branch);
         String url = ONTOLOGY_ROOT_URL + encodedTermUrl + "/hierarchicalDescendants?size=200&page=" + page;
         String json = parseURL(url);
+        return createJsonObjectFromString(json);
+    }
+
+    public JSONObject createJsonObjectFromString(String json){
         JSONObject job;
         try {
             job = new JSONObject(json);
         }
         catch (JSONException e){
-            log.error("JSONException in {}",branch);
+            log.error("JSONException in {}",json);
             return new JSONObject("{}");
         }
         return job;
