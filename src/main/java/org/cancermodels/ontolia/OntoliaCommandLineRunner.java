@@ -3,6 +3,7 @@ package org.cancermodels.ontolia;
 import org.apache.commons.cli.*;
 import org.cancermodels.ontolia.config.OntologyBranchDefinitions;
 import org.cancermodels.ontolia.model.Ontology;
+import org.cancermodels.ontolia.services.OntoliaFileWriter;
 import org.cancermodels.ontolia.services.OntologyLinking;
 import org.cancermodels.ontolia.services.OntologyReader;
 import org.slf4j.Logger;
@@ -42,7 +43,8 @@ public class OntoliaCommandLineRunner implements CommandLineRunner {
         log.info("Regimen terms loaded: {}", ontology.getRegimenTerms().size());
         OntologyLinking ontologyLinking = new OntologyLinking(ontology);
         ontologyLinking.link();
-        //TODO: create linked regimens file here
+        OntoliaFileWriter ofw = new OntoliaFileWriter(outputDir, ontology);
+        ofw.createOutputFile();
     }
 
 
