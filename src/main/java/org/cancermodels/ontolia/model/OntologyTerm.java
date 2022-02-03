@@ -20,33 +20,14 @@ abstract class OntologyTerm {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getIri() {
-        return iri;
-    }
-
-    public void setIri(String iri) {
-        this.iri = iri;
-    }
-
     public String getLabel() {
         return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     public Set<String> getSynonyms() {
         return synonyms;
     }
 
-    public void setSynonyms(Set<String> synonyms) {
-        this.synonyms = synonyms;
-    }
 
     @Override
     public String toString() {
