@@ -1,4 +1,4 @@
-package org.cancermodels.ontolia;
+package org.cancermodels.ontolia.model;
 
 import org.cancermodels.ontolia.model.TreatmentOntologyTerm;
 import org.junit.Assert;
