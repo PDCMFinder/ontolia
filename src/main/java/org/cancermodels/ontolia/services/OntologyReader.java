@@ -148,12 +148,11 @@ public class OntologyReader {
     public String parseURL(String urlStr) {
 
         StringBuilder sb = new StringBuilder();
-
         URL url = null;
         try {
             url = new URL(urlStr);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.error("Error when parsing url", e);
         }
 
         assert url != null;

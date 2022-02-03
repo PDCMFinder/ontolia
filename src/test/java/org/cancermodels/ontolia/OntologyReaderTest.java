@@ -28,9 +28,9 @@ public class OntologyReaderTest {
         JSONObject job = ontologyReader.createJsonObjectFromString(getExampleApiResponse());
         JSONObject job2 = ontologyReader.createJsonObjectFromString(getExampleInvalidApiResponse());
 
-        Assert.assertEquals(job.has("_embedded"), true);
-        Assert.assertEquals(job.getJSONObject("_embedded").has("terms"), true);
-        Assert.assertEquals(job2.has("_embedded"), false);
+        Assert.assertEquals(true, job.has("_embedded"));
+        Assert.assertEquals(true, job.getJSONObject("_embedded").has("terms"));
+        Assert.assertEquals(false, job2.has("_embedded"));
     }
 
 
