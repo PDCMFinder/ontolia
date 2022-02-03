@@ -56,8 +56,11 @@ public class OntoliaMatrixRow {
     public void calculateScore(){
         for(int i=0; i < matchedTerms.size(); i++){
             if(matchedTerms.get(i) != null){
-                if(matchedTermsFoundIn.get(i).equals("synonym")) matchScore +=1;
-                if(matchedTermsFoundIn.get(i).equals("label")) matchScore +=10;
+                if(matchedTermsFoundIn.get(i).equals("synonym")) matchScore +=10;
+                if(matchedTermsFoundIn.get(i).equals("label")) matchScore +=100;
+            }
+            else{
+                matchScore +=1;
             }
         }
     }
@@ -66,24 +69,12 @@ public class OntoliaMatrixRow {
         return matchedTerms;
     }
 
-    public void setMatchedTerms(List<TreatmentOntologyTerm> matchedTerms) {
-        this.matchedTerms = matchedTerms;
-    }
-
     public String[] getSynonyms() {
         return synonyms;
     }
 
-    public void setSynonyms(String[] synonyms) {
-        this.synonyms = synonyms;
-    }
-
     public List<String> getMatchedTermsFoundIn() {
         return matchedTermsFoundIn;
-    }
-
-    public void setMatchedTermsFoundIn(List<String> matchedTermsFoundIn) {
-        this.matchedTermsFoundIn = matchedTermsFoundIn;
     }
 
     public int getMatchScore() {
