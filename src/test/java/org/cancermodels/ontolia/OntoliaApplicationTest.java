@@ -2,10 +2,8 @@ package org.cancermodels.ontolia;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class OntoliaApplicationTests {
+class OntoliaApplicationTest {
 
     @Test
     void Given_dirIsPassed_ThenReturnDirString() {
