@@ -2,6 +2,7 @@ package org.cancermodels.ontolia.model;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RegimenOntologyTerm extends OntologyTerm{
 
@@ -18,5 +19,15 @@ public class RegimenOntologyTerm extends OntologyTerm{
 
     public void setLinkedTreatmentTerms(List<TreatmentOntologyTerm> linkedTreatmentTerms) {
         this.linkedTreatmentTerms = linkedTreatmentTerms;
+    }
+
+    public String getRegimenLinkString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.getId());
+        sb.append("=");
+        String linkedIds = linkedTreatmentTerms.stream().map(TreatmentOntologyTerm::getId)
+                .collect(Collectors.joining(","));
+        sb.append(linkedIds);
+        return sb.toString();
     }
 }
