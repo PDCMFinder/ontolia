@@ -1,12 +1,9 @@
-package org.cancermodels.ontolia;
+package org.cancermodels.ontolia.config;
 
-import org.cancermodels.ontolia.config.OntologyBranchDefinitions;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class OntologyBranchDefinitionsTest {
-
 
     @Test
     public void given_BranchDefinitions_then_CheckNumberOfDefs(){
