@@ -91,25 +91,10 @@ public class OntoliaMatrix {
     }
 
 
-    public int getBestMatchScore(){
-
-        int bestScore = 0;
-
-        for(OntoliaMatrixRow omr: matrix){
-
-            if(omr.getMatchScore() > bestScore){
-                bestScore = omr.getMatchScore();
-            }
-        }
-
-        return bestScore;
-    }
-
     /**
      * Links existing ontology terms to the elements in the matrix rows
      */
-    private void matchMatrixRows(){
-
+    public void matchMatrixRows(){
 
         for(OntoliaMatrixRow row : matrix){
 
@@ -117,29 +102,23 @@ public class OntoliaMatrix {
             boolean completeMatch = true;
 
             for(int i = 0; i < synonyms.length; i++){
-
                 String label = getCleanLabel(synonyms[i]);
 
                 if(termsByLabel.containsKey(label)){
-
                     row.getMatchedTerms().add(termsByLabel.get(label));
                     row.getMatchedTermsFoundIn().add("label");
-                    row.setMatchScore(row.getMatchScore() +100);
                 }
                 else if(termsBySynonym.containsKey(label)){
                     row.getMatchedTerms().add(termsBySynonym.get(label));
                     row.getMatchedTermsFoundIn().add("synonym");
-                    row.setMatchScore (row.getMatchScore() +10);
                 }
                 else{
-
                     row.getMatchedTerms().add(null);
                     row.getMatchedTermsFoundIn().add(null);
-                    row.setMatchScore (row.getMatchScore() +1);
                     completeMatch = false;
                 }
             }
-
+            row.calculateScore();
             row.setCompleteMatch(completeMatch);
         }
 
@@ -168,4 +147,7 @@ public class OntoliaMatrix {
         return cleanLabel.trim();
     }
 
+    public List<OntoliaMatrixRow> getMatrix() {
+        return matrix;
+    }
 }
