@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class OntoliaMatrixRowTest {
 
     @Test
-    public void given_MatrixRow_when_GetRowStringIsCalled_then_RowStringIsCorrect(){
+    void given_MatrixRow_when_GetRowStringIsCalled_then_RowStringIsCorrect(){
         Assert.assertEquals("[Term1] [Term2] Score: 200", getTestRow1().getRowString());
         Assert.assertEquals("[Term1] (Term2) (Term3) Score: 120", getTestRow2().getRowString());
         Assert.assertEquals("[Term1] (Term2) |NonExistingTerm3| Score: 111", getTestRow3().getRowString());

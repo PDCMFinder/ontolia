@@ -49,16 +49,6 @@ public class OntologyReaderTest {
         Assert.assertEquals(6, hierarchicalChildren.length());
     }
 
-    /*
-    @Test
-    public void given_BranchUrl_when_loadTreatmentTermsFromBranch_then_TermsPopulatedInOntology(){
-        OntologyReader ontologyReaderMock = mock(OntologyReader.class);
-        when(ontologyReaderMock.getApiResponseFromBranchUrl(Mockito.anyString(), Mockito.anyInt())).thenReturn(getBranchJSONObject());
-        Ontology ontology = new Ontology();
-        ontologyReaderMock.loadAllTreatmentTermsFromBranch("", ontology);
-        Assert.assertEquals(6, ontology.getTreatmentTerms().size());
-    }
-*/
     @Test
     public void given_JSONObject_when_parseHierarchicalChildren_then_TermsPopulatedInOntology(){
         Ontology ontology = new Ontology();

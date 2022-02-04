@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class OntologyTermTest {
 
     @Test
-    public void given_NewTreatmentTerm_then_ToStringIsCorrect(){
+    void given_NewTreatmentTerm_then_ToStringIsCorrect(){
         Assert.assertEquals(getCorrectToString(), getTestTreatmentTerm().toString());
 
     }

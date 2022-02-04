@@ -11,7 +11,7 @@ public class RegimenOntologyTermTest {
 
 
     @Test
-    public void given_NewTreatmentTerm_then_ToRegimenLinkStringIsCorrect(){
+    void given_NewTreatmentTerm_then_ToRegimenLinkStringIsCorrect(){
         Assert.assertEquals(getCorrectToString(), getTestTerm().getRegimenLinkString());
 
     }
