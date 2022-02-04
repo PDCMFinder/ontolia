@@ -23,7 +23,8 @@ public class RegimenOntologyTermTest {
         List<TreatmentOntologyTerm> linkedTerms = new ArrayList<>();
         linkedTerms.add(term2);
         linkedTerms.add(term3);
-        RegimenOntologyTerm term1 = new RegimenOntologyTerm("NCIT_1", "https://ncit_1", "test1", new HashSet<>(), linkedTerms);
+        RegimenOntologyTerm term1 = new RegimenOntologyTerm("NCIT_1", "https://ncit_1", "test1", new HashSet<>(), null);
+        term1.setLinkedTreatmentTerms(linkedTerms);
         return term1;
     }
 
