@@ -17,10 +17,6 @@ public class RegimenOntologyTerm extends OntologyTerm{
         return linkedTreatmentTerms;
     }
 
-    public void setLinkedTreatmentTerms(List<TreatmentOntologyTerm> linkedTreatmentTerms) {
-        this.linkedTreatmentTerms = linkedTreatmentTerms;
-    }
-
     public String getRegimenLinkString(){
         StringBuilder sb = new StringBuilder();
         sb.append(super.getId());
