@@ -1,4 +1,4 @@
-package org.cancermodels.ontolia;
+package org.cancermodels.ontolia.services;
 
 import org.cancermodels.ontolia.model.Ontology;
 import org.cancermodels.ontolia.services.OntologyReader;
