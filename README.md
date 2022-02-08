@@ -10,7 +10,7 @@ output directory, using the --dir= program argument.
 
 
 ### Running the application
-```aidl
+```
 java -jar ontolia.jar --dir=/Users/csaba/Ontolia
 ```
 This command will run the application and creates the ontolia output file at: /Users/csaba/Ontolia/ontolia_output.txt
@@ -19,7 +19,7 @@ This command will run the application and creates the ontolia output file at: /U
 *RegimenId=TreatmentTermId1,TreatmentTermId2,TreatmentTermIdX**
 
 Example output:
-```aidl
+```
 NCIT_C37600=NCIT_C1282,NCIT_C405,NCIT_C456,NCIT_C491
 NCIT_C37601=NCIT_C1282,NCIT_C405,NCIT_C1093
 ```
