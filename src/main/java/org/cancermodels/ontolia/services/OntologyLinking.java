@@ -30,7 +30,7 @@ public class OntologyLinking {
 
     }
 
-    private void initTermMaps(){
+    public void initTermMaps(){
         treatmentTermSynonymsMap = new HashMap<>();
         treatmentTermLabelsMap = new HashMap<>();
         for(Map.Entry<String, TreatmentOntologyTerm> entry:ontology.getTreatmentTerms().entrySet()){
@@ -46,7 +46,8 @@ public class OntologyLinking {
         }
     }
 
-    private void linkRegimenToTreatments(RegimenOntologyTerm regimen) {
+
+    public void linkRegimenToTreatments(RegimenOntologyTerm regimen) {
 
         Set<String> synonyms = regimen.getSynonyms();
         OntoliaMatrix slashOntoliaMatrix = new OntoliaMatrix("/", treatmentTermLabelsMap, treatmentTermSynonymsMap);
@@ -132,4 +133,12 @@ public class OntologyLinking {
         return list.stream().toArray(String[]::new);
     }
 
+
+    public Map<String, TreatmentOntologyTerm> getTreatmentTermLabelsMap() {
+        return treatmentTermLabelsMap;
+    }
+
+    public Map<String, TreatmentOntologyTerm> getTreatmentTermSynonymsMap() {
+        return treatmentTermSynonymsMap;
+    }
 }

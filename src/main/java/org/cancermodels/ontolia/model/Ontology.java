@@ -32,16 +32,8 @@ public class Ontology {
         return treatmentTerms;
     }
 
-    public void setTreatmentTerms(Map<String, TreatmentOntologyTerm> treatmentTerms) {
-        this.treatmentTerms = treatmentTerms;
-    }
-
     public Map<String, RegimenOntologyTerm> getRegimenTerms() {
         return regimenTerms;
-    }
-
-    public void setRegimenTerms(Map<String, RegimenOntologyTerm> regimenTerms) {
-        this.regimenTerms = regimenTerms;
     }
 
     public int getLinkedRegimenCounter() {
@@ -54,5 +46,16 @@ public class Ontology {
 
     public List<String> getUnlinkedRegimensWithReason() {
         return unlinkedRegimensWithReason;
+    }
+
+    public List<String> getOntoliaOutputList(){
+        List<String> outputList = new ArrayList<>();
+        for(Map.Entry<String, RegimenOntologyTerm> entry:this.getRegimenTerms().entrySet()){
+            RegimenOntologyTerm regimen = entry.getValue();
+            if(!regimen.getLinkedTreatmentTerms().isEmpty()){
+                outputList.add(regimen.getRegimenLinkString());
+            }
+        }
+        return outputList;
     }
 }
