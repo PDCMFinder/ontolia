@@ -15,12 +15,13 @@ java -jar ontolia.jar --dir=/Users/csaba/Ontolia
 ```
 This command will run the application and creates the ontolia output file at: /Users/csaba/Ontolia/ontolia_output.txt
 
-###Ontolia output file format
+### Ontolia output file format
 *RegimenId=TreatmentTermId1,TreatmentTermId2,TreatmentTermIdX**
 
 Example output:
 ```
 NCIT_C37600=NCIT_C1282,NCIT_C405,NCIT_C456,NCIT_C491
-NCIT_C37601=NCIT_C1282,NCIT_C405,NCIT_C1093
 ```
+
+NCIT_C37600 = Carboplatin/Cyclophosphamide/Doxorubicin/Etoposide
 
